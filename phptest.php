@@ -2,7 +2,7 @@
 include_once("core/APIKey.php");
 
 $region = "na";
-$url = "https://global.api.pvp.net/api/lol/static-data/{$region}/v1.2/champion?champData=all&api_key=" . $apiKey;
+$url = "https://global.api.pvp.net/api/lol/static-data/{$region}/v1.2/champion?champData=all&api_key=" . $APIkey;
 $data = file_get_contents($url);
 $data = json_decode($data,true);
 //var_dump($data);
