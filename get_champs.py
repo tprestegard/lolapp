@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 # Parameters.
-fname = "data/champ_info.dat"
+fname = "data/champ_info.json"
 
 # Imports
 import urllib2, json, re, pdb

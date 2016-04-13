@@ -3,6 +3,8 @@
 <head>
 <link rel="stylesheet" type="text/css" href="css/champs.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/champs.js"></script>
 </head>
 
@@ -14,7 +16,7 @@ include_once("core/APIKey.php"); // get $APIKey
 $region = "na";
 $url = "https://global.api.pvp.net/api/lol/static-data/{$region}/v1.2/champion?champData=all&api_key=" . $APIKey;
 #$data = file_get_contents($url);
-$data = file_get_contents("data/champ_info.dat");
+$data = file_get_contents("data/champ_info.json");
 $data = json_decode($data,true);
 
 // Sort by keys (champ names)
@@ -31,7 +33,7 @@ echo "<table class=\"champs\" id=\"champ_table\">\n<tr>\n";
 $colCount = 0;
 for ($i = 0; $i < sizeof($data["data"]); $i++) {
     $champ_i = $data["data"][$keys[$i]];
-    $image_i = '<img src="http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/' . $champ_i["image"]["full"] . '" alt="' . $champ_i["name"] . '" />' . "\n";
+    $image_i = '<img src="http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/' . $champ_i["image"]["full"] . '" alt="' . $champ_i["name"] . '" data-name="' . $keys[$i] . '" />' . "\n";
     echo "\t<td>\n\t\t" . $image_i . "\t</td>\n";
 
     $colCount++;
@@ -50,6 +52,11 @@ while ($colCount < $nCols) {
 echo "</tr>\n";
 echo "</table>\n";
 
+echo "<br /><br />";
+echo "<div id=\"skills\"></div>";
+
+
+/*
 for ($i = 0; $i < 5; $i++) {
     $champ_i = $data["data"][$keys[$i]];
 
@@ -62,6 +69,7 @@ for ($i = 0; $i < 5; $i++) {
     }
     echo "</p>\n";
 }
+*/
 
 ?>
 
