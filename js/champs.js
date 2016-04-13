@@ -5,24 +5,50 @@
 //});
 $(function() {
     $("#champ_table img").click(function () {
-	//$(this).css("border-color","yellow");
-	//$(this).css("opacity","1.0");
-	//$('img').css("border-color","black");
-	//$(this).css("border-color","yellow");
+
 	// could do this more efficiently.
+	// Table parameters.
+	var inactive_op = 0.5;
+	var inactive_bc = "black";
+	var active_op = 1.0;
+	var active_bc = "yellow";
+	var ttime = 500;
+	
+	
 	$('img').not(this).each( function() {
-	    //$(this).animate({opacity: 0.5, borderColor: "black"},500);
-	    $(this).animate({opacity: 0.5, borderColor: "black"},500);
+	    if ($(this).css("opacity") != inactive_op) {
+		$(this).animate({opacity: inactive_op, borderColor: inactive_bc},ttime);
+	    }
+
 	});
-	//$('img.active').removeClass('active',500);
-	//$(this).addClass('active',500);
-	$(this).animate({opacity: 1.0, borderColor: "yellow"},500);
+	$(this).animate({opacity: active_op, borderColor: active_bc},ttime);
 	
 	/*
-	$(this).animate({
-	    opacity: 1.0
-	},"slow");
+	$('img').not(this).each( function() {
+	    $(this).animate({opacity: 0.5, borderColor: "black"},ttime);
+	});
+	$(this).animate({opacity: 1.0, borderColor: "yellow"},ttime);
+	*/
+
+/*
+	$('img').not(this).each( function() {
+	    //$(this).animate({opacity: 0.5, borderColor: "black"},500);
+	    if (!$(this).hasClass("inactive") && !$(this).hasClass("active")){
+		//$(this).switchClass("inactive",500)
+		$(this).addClass("inactive",ttime);
+	    } else if ($(this).hasClass("active")) {
+		$(this).removeClass("active",ttime/2).addClass("inactive",ttime/2);
+	    }
+	});
+
+	if ($(this).hasClass("inactive")) {
+	    //$(this).switchClass('active',500);
+	    $(this).removeClass('inactive',ttime/2).addClass("active",ttime/2);
+	} else {
+	    $(this).addClass('active',ttime);
+	}
 */
+
 	// DDragon server
 	var ddPassive = "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/passive/"
 	var ddSkill = "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/";
