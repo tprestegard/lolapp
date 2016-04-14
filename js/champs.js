@@ -7,7 +7,7 @@ $(function() {
 	var inactive_bc = "black";
 	var active_op = 1.0;
 	var active_bc = "yellow";
-	var ttime = 500;
+	var ttime = 800;
 	
 	
 	$('img').not(this).each( function() {
@@ -16,7 +16,7 @@ $(function() {
 	    }
 
 	});
-	$(this).animate({opacity: active_op, borderColor: active_bc},ttime);
+	$(this).animate({opacity: active_op, borderColor: active_bc},ttime*0.5);
 	
 	// DDragon server
 	var ddPassive = "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/passive/"
@@ -30,25 +30,39 @@ $(function() {
 	    var champData = jsonData.data[champName];
 
 	    // Add name as heading
-	    skillHTML.push("<h3>" + champData.name + ", " + champData.title + "</h3>");
+	    skillHTML += "<p>" + champData.name + ", " + champData.title + "</p>";
 	    
 	    // Set up table.
-	    //skillHTML.push("<table style=\"padding:5px;\"><tbody><tr>");
-	    var table = $('<table></table>');
+	    skillHTML += "<table id=\"skill_table\"><tr>";
     	    
 	    // Add passive
-	    skillHTML.push("<img src=\"" + ddPassive + champData.passive.image.full + "\" />");
+	    skillHTML += "<td><img src=\"" + ddPassive + champData.passive.image.full + "\" /></td>";
     
 	    // Add skills.
 	    for (i=0; i < champData.spells.length; i++) {
-		skillHTML.push("<img src=\"" + ddSkill + champData.spells[i].image.full + "\" />");
+		skillHTML += "<td><img src=\"" + ddSkill + champData.spells[i].image.full + "\" /></td>";
 	    }
 
-	    table.append(skillHTML);
-	    $('#skills').fadeOut('fast', function () {
-		$('#skills').html(skillHTML);
-		$('#skills').fadeIn('fast');
-	    });
+	    skillHTML += "</tr></table>";
+
+	    /*
+	    if ($('#skill_div').is(":visible")) {
+		$('#skill_div img, p').fadeOut('slow', function () {
+		    $('#skill_div').html(skillHTML);
+		    $('#skill_div img').fadeIn('slow');
+		    $('#skill_div p').fadeIn('slow');
+		});
+	    */
+	    if ($('#skill_div').is(":visible")) {
+		$('#skill_div img').fadeOut('slow', function () {
+		    $('#skill_div').html(skillHTML);
+		    $('#skill_div').fadeIn('slow');
+		});
+	    } else {
+		$('#skill_div').html(skillHTML);
+		$('#skill_div').fadeIn('slow');
+	    }
+		
 	});
 
     }).mouseover(function () {

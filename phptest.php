@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+    
 <?php
 include_once("core/APIKey.php"); // get $APIKey
 
@@ -53,23 +53,8 @@ echo "</tr>\n";
 echo "</table>\n";
 
 echo "<br /><br />";
-echo "<div id=\"skills\"></div>";
+echo "<div id=\"skill_div\" style=\"display: none;\"></div>";
 
-
-/*
-for ($i = 0; $i < 5; $i++) {
-    $champ_i = $data["data"][$keys[$i]];
-
-    echo "<p>";
-    echo '<img src="http://ddragon.leagueoflegends.com/cdn/6.7.1/img/passive/' . $champ_i["passive"]["image"]["full"] . '" alt="' . $champ_i["passive"]["name"] . '" />' . "\n";
-    for ($j = 0; $j < 4; $j++) {
-        //print_r($champ_i);
-        echo '<img src="http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/' . $champ_i["spells"][$j]["image"]["full"] . '" alt="' . $champ_i["spells"][$j]["name"] . '" />' . "\n";
-        //echo $champ_i["spells"][$j]["image"]["full"];
-    }
-    echo "</p>\n";
-}
-*/
 
 ?>
 
