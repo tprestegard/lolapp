@@ -38,5 +38,37 @@
 }
 
 #skill_table img {
+    /*border: 4px ridge;*/
+    width: 60px;
+    height: 60px;
+}
+
+#skill_table div {
     border: 4px ridge;
+    background-color: #222222;
+}
+
+.ui-tooltip {
+    background: #666;
+    color: white;
+    border: none;
+    padding: 0;
+    opacity: 1;
+}
+.ui-tooltip-content {
+    position: relative;
+    padding: 1em;
+}
+.ui-tooltip-content::after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    display: block;
+    width: 0;
+}
+.top .ui-tooltip-content::after {
+    bottom: -10px;
+    left: 72px;
+    border-color: #666 transparent;
+    border-width: 10px 10px 0;
 }

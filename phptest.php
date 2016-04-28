@@ -55,14 +55,16 @@ echo "</table>\n";
 echo "<br /><br />";
 
 ?>
+
 <div id="skill_div" style="display: none;">
+    <p></p>
     <table id="skill_table">
     <tr>
-    <td><img src="" /></td>
-    <td><img src="" /></td>
-    <td><img src="" /></td>
-    <td><img src="" /></td>
-    <td><img src="" /></td>
+    <td><div><img src="" /></div></td>
+    <td><div><img src="" /></div></td>
+    <td><div><img src="" /></div></td>
+    <td><div><img src="" /></div></td>
+    <td><div><img src="" /></div></td>
     </tr>
     </table>
 </div>
