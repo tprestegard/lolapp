@@ -53,10 +53,19 @@ echo "</tr>\n";
 echo "</table>\n";
 
 echo "<br /><br />";
-echo "<div id=\"skill_div\" style=\"display: none;\"></div>";
-
 
 ?>
+<div id="skill_div" style="display: none;">
+    <table id="skill_table">
+    <tr>
+    <td><img src="" /></td>
+    <td><img src="" /></td>
+    <td><img src="" /></td>
+    <td><img src="" /></td>
+    <td><img src="" /></td>
+    </tr>
+    </table>
+</div>
 
 
 </body>

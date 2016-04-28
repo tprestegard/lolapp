@@ -10,7 +10,7 @@ $(function() {
 	var ttime = 800;
 	
 	
-	$('img').not(this).each( function() {
+	$('#champ_table img').not(this).each( function() {
 	    if ($(this).css("opacity") != inactive_op) {
 		$(this).animate({opacity: inactive_op, borderColor: inactive_bc},ttime);
 	    }
@@ -29,6 +29,7 @@ $(function() {
 	    var skillHTML = [];
 	    var champData = jsonData.data[champName];
 
+	    /*
 	    // Add name as heading
 	    skillHTML += "<p>" + champData.name + ", " + champData.title + "</p>";
 	    
@@ -44,7 +45,7 @@ $(function() {
 	    }
 
 	    skillHTML += "</tr></table>";
-
+	    */
 	    /*
 	    if ($('#skill_div').is(":visible")) {
 		$('#skill_div img, p').fadeOut('slow', function () {
@@ -53,6 +54,7 @@ $(function() {
 		    $('#skill_div p').fadeIn('slow');
 		});
 	    */
+	    /*
 	    if ($('#skill_div').is(":visible")) {
 		$('#skill_div img').fadeOut('slow', function () {
 		    $('#skill_div').html(skillHTML);
@@ -62,6 +64,31 @@ $(function() {
 		$('#skill_div').html(skillHTML);
 		$('#skill_div').fadeIn('slow');
 	    }
+	    */
+
+	    if($('#skill_div').is(":visible")) {
+		// Fade out images/name
+		$('#skill_div img').fadeOut('slow');
+		// Update images/name
+		$('#skill_div').find('img:first').attr("src",ddPassive + champData.passive.image.full);
+		for (i=0; i<champData.spells.length; i++) {
+		    $('#skill_div').find("img:eq(" + (i+1) +")").attr("src",ddSkill + champData.spells[i].image.full);
+		}
+		// Fade in images/name
+		$('#skill_div img').fadeIn('slow');	
+		
+	    } else {
+		// Update images/name
+		// Fade in whole div
+		//var img_p = $('#skill_div').find('img:first');
+		//img_p.attr("src",ddPassive + champData.passive.image.full);
+		$('#skill_div').find('img:first').attr("src",ddPassive + champData.passive.image.full);
+		for (i=0; i<champData.spells.length; i++) {
+		    $('#skill_div').find("img:eq(" + (i+1) +")").attr("src",ddSkill + champData.spells[i].image.full);
+		}
+		$('#skill_div').fadeIn('slow');	
+	    }
+	    
 		
 	});
 
