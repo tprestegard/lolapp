@@ -55,34 +55,57 @@ $(function() {
 		$('#skill_div').fadeIn('slow');	
 	    }
 	    // Create hidden divs with skill information so we don't have to load the JSON each time a skill is hovered on?
-		
+	    // Store this info in global variable.
+	    window.champJSON = champData;
+	    //console.log(Object.keys(champData.spells[0]["effect"]));
+	    //console.log(JSON.stringify(champData.spells[0]));
+	    
 	});
+
 
     }).mouseover(function () {
     }).mouseout(function () {
     });
+
 });
 
 // Display skill info on hover.
 $(function() {
+    function genSkillInfo(skillJSON) {
+	var output = skillJSON["sanitizedTooltip"];
+
+	// Regex stuff
+	for (i=1; i<3; i++) {
+	    output = output.replace("{{ e" + i + " }}",skillJSON["effectBurn"][i]);
+	}
+	output = output.replace("{{ f1 }}","");
+	
+	console.log(JSON.stringify(skillJSON));
+	
+	return output;
+    }
+
+
     $("#skill_div div").hover(function () {
 	//$("img", this).animate({opacity: 0.2});
 	// Show div for this skill, attached to the div containing the img.
 	//$('<div class="tooltip">I\' am tooltips! tooltips! tooltips! :)</div>')
 	//    .appendTo('body');
-
+	var x = genSkillInfo(window.champJSON.spells[0]);
+	console.log(x);
+	
     }, function() {
 	//$("img", this).animate({opacity: 1.0});
     });
-});
 
-$(function() {
+
     $("#skill_table div").tooltip({
 	items: "div",
-	content: "<b>YES</b>",
+	content: "YES",
 	position: { my: "center bottom", at: "center top", collision: "none" },
 	show: { effect: "fadeIn", delay: 0 },
 	hide: { effect: "fadeOut", delay: 100 },
 	tooltipClass: "top"
     });
+
 });
