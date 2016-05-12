@@ -49,26 +49,30 @@
 }
 
 .ui-tooltip {
-    background: #666;
+    font-size: 8pt;
+    background: #000000;
     color: white;
-    border: none;
+    border: 2px solid white;
     padding: 0;
-    opacity: 1;
+    opacity: 1.0;
 }
 .ui-tooltip-content {
     position: relative;
-    padding: 1em;
+    padding: 10px;
 }
 .ui-tooltip-content::after {
-    content: '';
-    position: absolute;
-    border-style: solid;
-    display: block;
-    width: 0;
-}
-.top .ui-tooltip-content::after {
+    -webkit-transform: rotate(45deg);
+    width: 15px;
+    height: 15px;
     bottom: -10px;
-    left: 72px;
-    border-color: #666 transparent;
-    border-width: 10px 10px 0;
+    left: 142px;
+    background-color: black;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    border-top: 0;
+    border-left: 0;
+    display: block;
+    position: absolute;
+    content: ''
 }
+

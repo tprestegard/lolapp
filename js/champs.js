@@ -24,8 +24,8 @@ $(function() {
 	$(this).animate({opacity: active_op, borderColor: active_bc},ttime*0.5);
 	
 	// DDragon server
-	var ddPassive = "http://ddragon.leagueoflegends.com/cdn/6.8.1/img/passive/"
-	var ddSkill = "http://ddragon.leagueoflegends.com/cdn/6.8.1/img/spell/";
+	var ddPassive = "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/passive/"
+	var ddSkill = "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/";
 	var champName = $(this).attr('data-name');
 	
 	$.getJSON("data/champ_info.json", function(jsonData) {
@@ -72,6 +72,7 @@ $(function() {
 // Display skill info on hover.
 $(function() {
     function genSkillInfo(skillJSON) {
+	/*
 	var output = skillJSON["sanitizedTooltip"];
 
 	// Regex stuff
@@ -83,6 +84,8 @@ $(function() {
 	console.log(JSON.stringify(skillJSON));
 	
 	return output;
+	*/
+	return skillJSON["description"];
     }
 
 
@@ -92,7 +95,7 @@ $(function() {
 	//$('<div class="tooltip">I\' am tooltips! tooltips! tooltips! :)</div>')
 	//    .appendTo('body');
 	var x = genSkillInfo(window.champJSON.spells[0]);
-	console.log(x);
+	//console.log(x);
 	
     }, function() {
 	//$("img", this).animate({opacity: 1.0});
@@ -101,11 +104,17 @@ $(function() {
 
     $("#skill_table div").tooltip({
 	items: "div",
-	content: "YES",
-	position: { my: "center bottom", at: "center top", collision: "none" },
+	content: function () {
+	    var idx = $(this).parent().parent().children().index($(this).parent());
+	    if (idx > 0) {
+		return genSkillInfo(window.champJSON.spells[idx-1]);
+	    } else {
+		return genSkillInfo(window.champJSON.passive);
+	    }
+	},
+	position: { my: "center bottom-10", at: "center top", collision: "none" },
 	show: { effect: "fadeIn", delay: 0 },
 	hide: { effect: "fadeOut", delay: 100 },
-	tooltipClass: "top"
     });
 
 });
