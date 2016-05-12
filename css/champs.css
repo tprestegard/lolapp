@@ -18,6 +18,7 @@
     background-color: black;
     display: inline-block;
     border: 6px ridge;
+    margin-left: 80px;
 }
 
 #skill_div p {
@@ -51,21 +52,22 @@
 .ui-tooltip {
     font-size: 8pt;
     background: #000000;
-    color: white;
     border: 2px solid white;
     padding: 0;
     opacity: 1.0;
 }
 .ui-tooltip-content {
+    color: white;
     position: relative;
     padding: 10px;
+    max-width: 250px;
 }
 .ui-tooltip-content::after {
     -webkit-transform: rotate(45deg);
-    width: 15px;
-    height: 15px;
+    width: 14px;
+    height: 14px;
     bottom: -10px;
-    left: 142px;
+    left: calc(50% - 7px);
     background-color: black;
     border-right: 2px solid white;
     border-bottom: 2px solid white;

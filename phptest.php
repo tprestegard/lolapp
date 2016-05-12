@@ -52,7 +52,7 @@ while ($colCount < $nCols) {
 echo "</tr>\n";
 echo "</table>\n";
 
-echo "<br /><br />";
+echo "<br /><br /><br />";
 
 ?>
 
