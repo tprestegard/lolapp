@@ -85,7 +85,7 @@ $(function() {
 	
 	return output;
 	*/
-	return skillJSON["description"];
+	return skillJSON["sanitizedDescription"];
     }
 
 
